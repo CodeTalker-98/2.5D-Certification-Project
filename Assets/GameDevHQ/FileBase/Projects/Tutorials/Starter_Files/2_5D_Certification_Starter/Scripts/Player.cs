@@ -9,15 +9,22 @@ public class Player : MonoBehaviour
     [SerializeField] private float _gravity = 0.5f;
     private float _yVelocity;
     private Vector3 _velocity;
+    private Animator _anim;
     private CharacterController _controller;
 
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
+        _anim = GetComponentInChildren<Animator>();
 
         if (_controller == null)
         {
             Debug.LogError("The CHARACTER CONTROLLER is NULL");
+        }
+
+        if (_anim == null)
+        {
+            Debug.LogError("The PLAYER ANIMATOR is NULL");
         }
     }
 
@@ -30,9 +37,10 @@ public class Player : MonoBehaviour
     {
         if (_controller.isGrounded)
         {
-            float horizontalInput = Input.GetAxis("Horizontal");
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
             Vector3 direction = new Vector3(0,0, horizontalInput);
             _velocity = direction * _speed;
+            _anim.SetFloat("Speed", Mathf.Abs(horizontalInput));
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
