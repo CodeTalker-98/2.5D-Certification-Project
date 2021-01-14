@@ -76,6 +76,8 @@ public class Player : MonoBehaviour
     {
         _controller.enabled = false;
         _anim.SetBool("LedgeGrab", true);
+        _anim.SetBool("Jump", false);
+        _anim.SetFloat("Speed", 0.0f);
         transform.position = handPos;
     }
 }
