@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speed = 5.0f;
     [SerializeField] private float _jumpHeight = 20.0f;
     [SerializeField] private float _gravity = 0.5f;
+    private bool _jumping = false;
     private float _yVelocity;
     private Vector3 _velocity;
     private Animator _anim;
@@ -37,6 +38,12 @@ public class Player : MonoBehaviour
     {
         if (_controller.isGrounded)
         {
+            if (_jumping)
+            {
+                _anim.SetBool("Jump", false);
+                _jumping = false;
+            }
+
             float horizontalInput = Input.GetAxisRaw("Horizontal");
             Vector3 direction = new Vector3(0,0, horizontalInput);
             _velocity = direction * _speed;
@@ -44,12 +51,15 @@ public class Player : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                _jumping = true;
+                _anim.SetBool("Jump", true);
                 _yVelocity = _jumpHeight;
+                _anim.SetBool("Jump", true);
             }
         }
         else
         {            
-            _yVelocity -= _gravity;            
+            _yVelocity -= _gravity;
         }
         _velocity.y = _yVelocity;
         _controller.Move(_velocity * Time.deltaTime);
