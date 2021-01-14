@@ -72,9 +72,10 @@ public class Player : MonoBehaviour
         _controller.Move(_velocity * Time.deltaTime);
     }
 
-    public void GrabLedge()
+    public void GrabLedge(Vector3 handPos)
     {
         _controller.enabled = false;
         _anim.SetBool("LedgeGrab", true);
+        transform.position = handPos;
     }
 }

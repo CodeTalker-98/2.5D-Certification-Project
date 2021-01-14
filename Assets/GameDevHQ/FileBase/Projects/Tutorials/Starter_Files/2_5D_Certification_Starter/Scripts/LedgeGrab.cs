@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LedgeGrab : MonoBehaviour
 {
+    [SerializeField] private Vector3 _handOffest;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("LedgeGrabChecker"))
@@ -12,7 +14,7 @@ public class LedgeGrab : MonoBehaviour
 
             if (player != null)
             {
-                player.GrabLedge();
+                player.GrabLedge(_handOffest);
             }
         }
     }
