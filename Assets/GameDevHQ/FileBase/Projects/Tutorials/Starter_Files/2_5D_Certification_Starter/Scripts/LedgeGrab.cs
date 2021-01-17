@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LedgeGrab : MonoBehaviour
 {
-    [SerializeField] private Vector3 _handOffest;
+    [SerializeField] private Vector3 _handOffest, _standPos;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,8 +14,13 @@ public class LedgeGrab : MonoBehaviour
 
             if (player != null)
             {
-                player.GrabLedge(_handOffest);
+                player.GrabLedge(_handOffest, this);
             }
         }
+    }
+
+    public Vector3 StandPos()
+    {
+        return _standPos;
     }
 }

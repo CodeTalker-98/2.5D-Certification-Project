@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _handOffest: {x: 0.64, y: 67.22, z: 123.42}
+  _standPos: {x: 0.64, y: 74.46, z: 123.83}
 --- !u!1001 &1193905105
 PrefabInstance:
   m_ObjectHideFlags: 0

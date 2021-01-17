@@ -8,10 +8,12 @@ public class Player : MonoBehaviour
     [SerializeField] private float _jumpHeight = 20.0f;
     [SerializeField] private float _gravity = 0.5f;
     private bool _jumping = false;
+    private bool _onLedge = false;
     private float _yVelocity;
     private Vector3 _velocity;
     private Animator _anim;
     private CharacterController _controller;
+    private LedgeGrab _activeLedge;
 
     private void Start()
     {
@@ -32,6 +34,15 @@ public class Player : MonoBehaviour
     private void Update()
     {
         Movement();
+
+        if (_onLedge)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                _anim.SetBool("ClimbUp", true);
+                _onLedge = false;
+            }
+        }
     }
 
     private void Movement()
@@ -72,12 +83,22 @@ public class Player : MonoBehaviour
         _controller.Move(_velocity * Time.deltaTime);
     }
 
-    public void GrabLedge(Vector3 handPos)
+    public void GrabLedge(Vector3 handPos, LedgeGrab currentLedge)
     {
         _controller.enabled = false;
         _anim.SetBool("LedgeGrab", true);
         _anim.SetBool("Jump", false);
         _anim.SetFloat("Speed", 0.0f);
+        _onLedge = true;
         transform.position = handPos;
+        _activeLedge = currentLedge;
+    }
+
+    public void ClimbUp()
+    {
+        transform.position = _activeLedge.StandPos();
+        _anim.SetBool("LedgeGrab", false);
+        _anim.SetBool("ClimbUp", false);
+        _controller.enabled = true;
     }
 }
