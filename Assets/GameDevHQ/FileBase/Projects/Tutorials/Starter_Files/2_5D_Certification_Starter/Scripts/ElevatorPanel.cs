@@ -39,8 +39,8 @@ public class ElevatorPanel : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Collided with Player");
             _enableElevator = true;
+            other.transform.parent = this.transform.parent;
         }
     }
 
@@ -49,6 +49,7 @@ public class ElevatorPanel : MonoBehaviour
         if (other.tag == "Player")
         {
             _enableElevator = false;
+            other.transform.parent = null;
         }
     }
 }

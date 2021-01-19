@@ -10,15 +10,18 @@ public class Player : MonoBehaviour
     private bool _jumping = false;
     private bool _onLedge = false;
     private float _yVelocity;
+    private int _collectables = 0;
     private Vector3 _velocity;
     private Animator _anim;
     private CharacterController _controller;
     private LedgeGrab _activeLedge;
+    private UIManager _uiManager;
 
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
         _anim = GetComponentInChildren<Animator>();
+        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
 
         if (_controller == null)
         {
@@ -100,5 +103,11 @@ public class Player : MonoBehaviour
         _anim.SetBool("LedgeGrab", false);
         _anim.SetBool("ClimbUp", false);
         _controller.enabled = true;
+    }
+
+    public void PlayerCollectables()
+    {
+        _collectables++;
+        _uiManager.UpdateCollectables(_collectables);
     }
 }
