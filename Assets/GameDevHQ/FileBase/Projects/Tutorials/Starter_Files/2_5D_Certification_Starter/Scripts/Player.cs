@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _gravity = 0.5f;
     private bool _jumping = false;
     private bool _onLedge = false;
+    [SerializeField] private bool _canGrab = false;
+    [SerializeField] private bool _climbing = false;
     private float _yVelocity;
     private int _collectables = 0;
     private Vector3 _velocity;
@@ -77,6 +79,24 @@ public class Player : MonoBehaviour
                 _yVelocity = _jumpHeight;
                 _anim.SetBool("Jump", true);
             }
+
+            if(_canGrab && Input.GetKeyDown(KeyCode.E))
+            {
+                _climbing = true;
+            }
+
+            if (_climbing)
+            {
+                _anim.SetBool("ClimbingLadder", true);
+                float verticalInput = Input.GetAxisRaw("Vertical");
+                _controller.enabled = false;
+                transform.Translate(0, verticalInput * _speed * Time.deltaTime, 0);
+            }
+            else
+            {
+                _controller.enabled = true;
+                _anim.SetBool("ClimbingLadder", false);
+            }
         }
         else
         {            
@@ -109,5 +129,21 @@ public class Player : MonoBehaviour
     {
         _collectables++;
         _uiManager.UpdateCollectables(_collectables);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("LadderChecker"))
+        {
+            _canGrab = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("LadderChecker"))
+        {
+            _canGrab = false;
+        }
     }
 }
