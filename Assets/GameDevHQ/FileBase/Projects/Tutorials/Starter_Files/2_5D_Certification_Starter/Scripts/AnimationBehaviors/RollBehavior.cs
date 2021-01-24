@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClimbUpBehavior : StateMachineBehaviour
+public class RollBehavior : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -20,10 +20,11 @@ public class ClimbUpBehavior : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Player player = animator.gameObject.transform.parent.GetComponentInParent<Player>();
-        
+        Debug.Log("End Anim");
         if (player != null)
         {
-            player.ClimbUp();
+            Debug.Log("Got Here");
+            player.Roll();
         }
     }
 

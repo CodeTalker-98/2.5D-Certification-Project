@@ -79,6 +79,11 @@ public class Player : MonoBehaviour
                 _yVelocity = _jumpHeight;
                 _anim.SetBool("Jump", true);
             }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                _anim.SetBool("Roll", true);
+            }
         }
         else
         {            
@@ -104,7 +109,6 @@ public class Player : MonoBehaviour
         _controller.enabled = false;
         _anim.SetBool("ClimbingLadder", true);
         _climbing = true;
-        _anim.speed = Input.GetAxisRaw("Vertical");
         transform.position = climbPos.position;
         _activeLadder = ladder;
     }
@@ -115,6 +119,11 @@ public class Player : MonoBehaviour
         _anim.SetBool("LedgeGrab", false);
         _anim.SetBool("ClimbUp", false);
         _controller.enabled = true;
+    }
+
+    public void Roll()
+    {
+        _anim.SetBool("Roll", false);
     }
 
     public void PlayerCollectables()
