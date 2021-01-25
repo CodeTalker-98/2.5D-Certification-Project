@@ -93,7 +93,10 @@ public class Player : MonoBehaviour
         _velocity.y = _yVelocity;
         _controller.Move(_velocity * Time.deltaTime);
     }
-
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Debug.DrawRay(hit.point, hit.normal, Color.green);
+    }
     public void GrabLedge(Transform handPos, LedgeGrab currentLedge)
     {
         _controller.enabled = false;
