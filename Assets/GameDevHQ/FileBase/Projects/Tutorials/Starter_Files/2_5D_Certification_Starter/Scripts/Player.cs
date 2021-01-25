@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float _speed = 5.0f;
     [SerializeField] private float _jumpHeight = 20.0f;
     [SerializeField] private float _gravity = 0.5f;
+    [SerializeField] private float _rollDist = 3;
     private bool _jumping = false;
     private bool _onLedge = false;
     private bool _climbing = false;
@@ -70,19 +71,19 @@ public class Player : MonoBehaviour
                 Vector3 facing = transform.localEulerAngles;
                 facing.y = _velocity.z > 0 ? 0 : 180;
                 transform.localEulerAngles = facing;
+                
+                if (Input.GetKeyDown(KeyCode.LeftShift))
+                {
+                    _anim.SetBool("Roll", true);
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 _jumping = true;
-                _anim.SetBool("Jump", true);
+                //_anim.SetBool("Jump", true);
                 _yVelocity = _jumpHeight;
                 _anim.SetBool("Jump", true);
-            }
-
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                _anim.SetBool("Roll", true);
             }
         }
         else

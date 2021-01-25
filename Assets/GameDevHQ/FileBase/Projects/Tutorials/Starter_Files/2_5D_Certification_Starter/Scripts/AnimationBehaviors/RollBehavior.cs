@@ -20,10 +20,8 @@ public class RollBehavior : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Player player = animator.gameObject.transform.parent.GetComponentInParent<Player>();
-        Debug.Log("End Anim");
         if (player != null)
         {
-            Debug.Log("Got Here");
             player.Roll();
         }
     }
