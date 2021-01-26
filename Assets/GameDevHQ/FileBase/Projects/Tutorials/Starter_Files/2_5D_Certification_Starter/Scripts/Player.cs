@@ -5,9 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float _speed = 5.0f;
+    [SerializeField] private float _ladderSpd = 1.0f;
     [SerializeField] private float _jumpHeight = 20.0f;
     [SerializeField] private float _gravity = 0.5f;
-    [SerializeField] private float _rollDist = 3;
     private bool _jumping = false;
     private bool _onLedge = false;
     private bool _climbing = false;
@@ -39,7 +39,15 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        Movement();
+        if (!_climbing)
+        {
+            Movement();
+        }
+        else
+        {
+            LadderMovement();
+        }
+        
 
         if (_onLedge)
         {
@@ -93,9 +101,29 @@ public class Player : MonoBehaviour
         _velocity.y = _yVelocity;
         _controller.Move(_velocity * Time.deltaTime);
     }
+
+    private void LadderMovement()
+    {
+        float verticalInput = Input.GetAxisRaw("Vertical");
+        Vector3 direction = new Vector3(0, verticalInput, 0);
+        _velocity = direction * _ladderSpd;
+        _anim.SetFloat("LadderSpeed", verticalInput);
+        _controller.Move(_velocity * Time.deltaTime);
+    }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Debug.DrawRay(hit.point, hit.normal, Color.green);
+        //if (_controller.isGrounded)
+        //{
+            if (hit.transform.tag == "Ladder")
+            {
+                //float ladderJumpHeight = 0.125f;
+                _climbing = true;
+                transform.position = Vector3.up; //* ladderJumpHeight;
+                _anim.SetBool("ClimbingLadder", true);
+            }
+        //}
     }
     public void GrabLedge(Transform handPos, LedgeGrab currentLedge)
     {
