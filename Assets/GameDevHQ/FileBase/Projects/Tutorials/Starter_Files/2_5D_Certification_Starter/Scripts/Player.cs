@@ -109,6 +109,15 @@ public class Player : MonoBehaviour
         _velocity = direction * _ladderSpd;
         _anim.SetFloat("LadderSpeed", verticalInput);
         _controller.Move(_velocity * Time.deltaTime);
+
+        if (_controller.isGrounded)
+        {
+            if (_climbing)
+            {
+                _anim.SetBool("ClimbingLadder", false);
+                _climbing = false;
+            }
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -120,7 +129,7 @@ public class Player : MonoBehaviour
             {
                 //float ladderJumpHeight = 0.125f;
                 _climbing = true;
-                transform.position = Vector3.up; //* ladderJumpHeight;
+                transform.position += Vector3.up; //* ladderJumpHeight;
                 _anim.SetBool("ClimbingLadder", true);
             }
         //}
@@ -156,6 +165,11 @@ public class Player : MonoBehaviour
     public void Roll()
     {
         _anim.SetBool("Roll", false);
+    }
+
+    public void TopOfLadder()
+    {
+
     }
 
     public void PlayerCollectables()
