@@ -110,7 +110,7 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0
-  m_TransitionOffset: 0
+  m_TransitionOffset: 0.28551602
   m_ExitTime: 0.6875
   m_HasExitTime: 0
   m_HasFixedDuration: 1
@@ -241,6 +241,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b6ed26c04cc7254ebf047f27586b35b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1101 &-5052100605000744381
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions: []
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 4766512432467620908}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0
+  m_TransitionOffset: 0
+  m_ExitTime: 0.9375
+  m_HasExitTime: 1
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 1
 --- !u!1101 &-4787448712489795455
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -571,9 +593,10 @@ AnimatorState:
   m_Name: Climbing To Top
   m_Speed: 1
   m_CycleOffset: 0
-  m_Transitions: []
+  m_Transitions:
+  - {fileID: -5052100605000744381}
   m_StateMachineBehaviours:
-  - {fileID: -5251618718065991988}
+  - {fileID: 5451748545570337453}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -606,7 +629,7 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0
-  m_TransitionOffset: 0
+  m_TransitionOffset: 0.29214644
   m_ExitTime: 0.7222222
   m_HasExitTime: 0
   m_HasFixedDuration: 1
@@ -687,8 +710,8 @@ AnimatorStateTransition:
   m_IsExit: 0
   serializedVersion: 3
   m_TransitionDuration: 0
-  m_TransitionOffset: 0
-  m_ExitTime: 0.97081715
+  m_TransitionOffset: 0.28589642
+  m_ExitTime: 0.9708171
   m_HasExitTime: 0
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -1113,6 +1136,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3862b39faca439b41abeb39da3359a6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5451748545570337453
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3348a8ee7022cef42849ed2ffa7ccb27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1101 &8628473065693167508

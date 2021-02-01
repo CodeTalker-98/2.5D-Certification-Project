@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private bool _jumping = false;
     private bool _onLedge = false;
     private bool _climbing = false;
+    private bool _climbNoInput = false;
     private float _yVelocity;
     private int _collectables = 0;
     private Vector3 _velocity;
@@ -110,6 +111,15 @@ public class Player : MonoBehaviour
         _anim.SetFloat("LadderSpeed", verticalInput);
         _controller.Move(_velocity * Time.deltaTime);
 
+        if (_climbNoInput)
+        {
+            _anim.speed = 1.0f;
+        }
+        else
+        {
+            _anim.speed = Mathf.Abs(verticalInput);
+        }
+
         if (_controller.isGrounded)
         {
             if (_climbing)
@@ -129,7 +139,7 @@ public class Player : MonoBehaviour
             {
                 //float ladderJumpHeight = 0.125f;
                 _climbing = true;
-                transform.position += Vector3.up; //* ladderJumpHeight;
+                //transform.position += Vector3.up; //* ladderJumpHeight;
                 _anim.SetBool("ClimbingLadder", true);
             }
         //}
@@ -145,15 +155,6 @@ public class Player : MonoBehaviour
         _activeLedge = currentLedge;
     }
 
-    public void LadderClimb(Transform climbPos, Ladder ladder)
-    {
-        _controller.enabled = false;
-        _anim.SetBool("ClimbingLadder", true);
-        _climbing = true;
-        transform.position = climbPos.position;
-        _activeLadder = ladder;
-    }
-
     public void ClimbUp()
     {
         transform.position = _activeLedge.StandOffset();
@@ -167,9 +168,28 @@ public class Player : MonoBehaviour
         _anim.SetBool("Roll", false);
     }
 
-    public void TopOfLadder()
+    public void GrabLadder(Transform climbPos, Ladder currentLadder)
     {
+        _controller.enabled = false;
+        _anim.speed = 1.0f;
+        _anim.SetBool("TopOfLadder", true);
+        transform.position = climbPos.position;
+        _activeLadder = currentLadder;
+    }
 
+    public void ClimbUpLadder()
+    {
+        transform.position = _activeLadder.StandOffset();
+        _anim.SetBool("ClimbingLadder", false);
+        _anim.SetBool("TopOfLadder", false);
+        _climbing = false;
+        _climbNoInput = false;
+        _controller.enabled = true;
+    }
+
+    public void SetAnimSpd()
+    {
+        _climbNoInput = true;
     }
 
     public void PlayerCollectables()

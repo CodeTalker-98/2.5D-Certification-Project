@@ -6203,11 +6203,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698400827}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.39, y: 5.035, z: 0.92}
+  m_LocalPosition: {x: 1.38, y: 4.94, z: 0.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 785529828}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &709363421
 GameObject:
@@ -7094,7 +7094,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.37, y: 5.48, z: 1}
+  m_Size: {x: 0.37, y: 3.8, z: 1}
   m_Center: {x: 2.9, y: 2.33, z: 0.82}
 --- !u!54 &785529826
 Rigidbody:
@@ -7125,7 +7125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _standPos: {fileID: 698400828}
-  _climbPos: {fileID: 1353640985}
+  _climbPos: {fileID: 1280850701}
 --- !u!4 &785529828 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: f96ec36354a834c1daeae3801d0103c8,
@@ -13075,6 +13075,36 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1280607181}
   m_Mesh: {fileID: 4717014133672598762, guid: c697a914116cb4b75b9e4625a6ef69ab, type: 3}
+--- !u!1 &1280850700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1280850701}
+  m_Layer: 0
+  m_Name: ClimbPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1280850701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280850700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.61, y: 2.47, z: 0.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 785529828}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1286315792
 GameObject:
   m_ObjectHideFlags: 0
@@ -13898,36 +13928,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1348999334}
   m_Mesh: {fileID: -7062237550436784827, guid: 0bf4c584b1d4544e7885d4a7da2ac57c, type: 3}
---- !u!1 &1353640984
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1353640985}
-  m_Layer: 0
-  m_Name: ClimbPos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1353640985
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1353640984}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.62, y: -0.3, z: 0.92}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 785529828}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1353959958
 GameObject:
   m_ObjectHideFlags: 0
@@ -30127,6 +30127,16 @@ PrefabInstance:
       propertyPath: _targetB
       value: 
       objectReference: {fileID: 225618801}
+    - target: {fileID: 7655149895811560731, guid: f356095930aa4b64c9e589e20756740c,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 23.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 7655149895811560731, guid: f356095930aa4b64c9e589e20756740c,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -5.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f356095930aa4b64c9e589e20756740c, type: 3}
 --- !u!1 &7665264414951560103

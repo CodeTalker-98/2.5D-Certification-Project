@@ -23,7 +23,7 @@ public class TopOfLadderBehavior : StateMachineBehaviour
 
         if (player != null)
         {
-            player.TopOfLadder();
+            player.ClimbUpLadder();
         }
     }
 
