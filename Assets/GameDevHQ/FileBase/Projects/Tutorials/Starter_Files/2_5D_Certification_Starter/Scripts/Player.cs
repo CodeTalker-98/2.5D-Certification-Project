@@ -133,16 +133,11 @@ public class Player : MonoBehaviour
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Debug.DrawRay(hit.point, hit.normal, Color.green);
-        //if (_controller.isGrounded)
-        //{
             if (hit.transform.tag == "Ladder")
             {
-                //float ladderJumpHeight = 0.125f;
                 _climbing = true;
-                //transform.position += Vector3.up; //* ladderJumpHeight;
                 _anim.SetBool("ClimbingLadder", true);
             }
-        //}
     }
     public void GrabLedge(Transform handPos, LedgeGrab currentLedge)
     {
